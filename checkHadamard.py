@@ -1,6 +1,8 @@
 from cmath import isclose
 from typing import List
 
+tolerance = 0.00005
+
 #basic function to check if a given mxn matrix is a (real) hadamard matrix
 def checkHadamard(mat: List[List[int]]) -> bool:
     numRows = len(mat)
@@ -24,9 +26,7 @@ def checkComplexHadamard(mat: List[List[complex]]) -> bool:
             compareRow = mat[j]
             sum = 0
             for i in range(len(mainRow)):
-                if mainRow[i] == 0 or compareRow[i] == 0: #cannot have a 0 in a hadamard matrix
-                    return False
                 sum += mainRow[i]/compareRow[i] #a*(b^-1)=a/b
-            if not isclose(sum, 0, abs_tol=0.000005): #allow for small margin of error
+            if not isclose(sum, 0, abs_tol=tolerance): #allow for small margin of error
                 return False
     return True
