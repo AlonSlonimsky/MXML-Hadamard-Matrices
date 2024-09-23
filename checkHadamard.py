@@ -28,4 +28,3 @@ def checkComplexHadamard(mat: List[List[complex]]) -> bool:
             if not isclose(sum, 0, abs_tol=0.000005): #allow for small margin of error
                 return False
     return True
-
