@@ -9,7 +9,10 @@ def is_unit_modulus(matrix):
 
 def is_pairwise_orthogonal(matrix):
     """Check if the columns of the matrix are pairwise orthogonal."""
-    return np.allclose(np.diag(matrix @ matrix.T.conjugate()), matrix.shape[0])
+    matrix_product = matrix @ matrix.T.conjugate()
+    correct_diagonal = np.allclose(np.diag(matrix_product), matrix.shape[0])
+    correct_off_diagonal = np.allclose(matrix_product - np.diag(np.diag(matrix_product)), 0)
+    return correct_diagonal and correct_off_diagonal
 
 def is_hadamard(matrix):
     return is_unit_modulus(matrix) and is_pairwise_orthogonal(matrix)

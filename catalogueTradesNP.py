@@ -1,12 +1,12 @@
 from checkHadamardNP import *
 import numpy as np
 
-def try_combinations(mat, c, index=0):
+def catalogue_trades(mat, c, index, copy, dest):
     n = mat.shape[0]
     if index == n * n:
         if is_hadamard(mat):
             comparison_mat = generate_comparison_matrix(mat, copy)
-            with open('output.txt', 'a') as f:
+            with open(dest, 'a') as f:
                 np.savetxt(f, mat, fmt='%.2f')
                 f.write("\n")
                 for row in comparison_mat:
@@ -18,11 +18,11 @@ def try_combinations(mat, c, index=0):
     curCol = index % n
     
     # Try without multiplying
-    try_combinations(mat, c, index + 1)
+    catalogue_trades(mat, c, index + 1, copy, dest)
     
     # Try multiplying by c
     mat[curRow, curCol] *= c
-    try_combinations(mat, c, index + 1)
+    catalogue_trades(mat, c, index + 1, copy, dest)
     
     # Revert the change for backtracking
     mat[curRow, curCol] /= c
@@ -38,19 +38,3 @@ def generate_comparison_matrix(mat, original_mat):
     if count < mat.shape[0] and count != 0:
         print("TRADE LESS THAN n DETECTED")
     return comparison_mat
-
-# Example usage
-c = -1  # Example element to multiply with
-example = np.matrix([
-    [1, 1, 1],
-    [1, GAM, GAM2],
-    [1, GAM2, GAM]
-])  # Example n by n matrix
-copy = example.copy()  # Copy the matrix to avoid modifying the original
-
-print(is_hadamard(example))  # Check if the matrix is Hadamard
-
-# Clear the output file before starting
-open('output.txt', 'w').close()
-
-try_combinations(example, c)
