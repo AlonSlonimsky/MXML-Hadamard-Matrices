@@ -3,7 +3,7 @@ from checkHadamardNP import *
 from catalogueTradesNP import *
 
 # Element to multiply with
-c = 1j
+c = -1
 
 # The matrix (must be UH(n))
 example = np.matrix([
@@ -17,7 +17,7 @@ example = np.matrix([
 copy = example.copy()
 
 # Output file
-DEST = 'outputs/output.txt'
+DEST = 'outputs/F_4_c_-1.txt'
 
 # Clear the file
 open(DEST, 'w').close()
