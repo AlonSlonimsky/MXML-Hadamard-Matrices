@@ -1,7 +1,7 @@
 from checkHadamardNP import *
 import numpy as np
 
-def catalogue_trades(mat, c, index, copy, dest):
+def catalogue_trades(mat, c, index, copy, dest, count=0):
     n = mat.shape[0]
     if index == n * n:
         if is_hadamard(mat):
@@ -18,14 +18,15 @@ def catalogue_trades(mat, c, index, copy, dest):
     curCol = index % n
     
     # Try without multiplying
-    catalogue_trades(mat, c, index + 1, copy, dest)
+    catalogue_trades(mat, c, index + 1, copy, dest, count)
     
-    # Try multiplying by c
-    mat[curRow, curCol] *= c
-    catalogue_trades(mat, c, index + 1, copy, dest)
-    
-    # Revert the change for backtracking
-    mat[curRow, curCol] /= c
+    if (count < n):
+        # Try multiplying by c
+        mat[curRow, curCol] *= c
+        catalogue_trades(mat, c, index + 1, copy, dest, count+1)
+        
+        # Revert the change for backtracking
+        mat[curRow, curCol] /= c
 
 def generate_comparison_matrix(mat, original_mat):
     comparison_mat = np.full(mat.shape, 'o', dtype=str)
