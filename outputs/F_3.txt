@@ -1,0 +1,21 @@
+Cataloguing UH of size 3:
+Constant appendix:
++ = 1
+a = -0.50+0.87j
+b = -0.50-0.87j
+
+Original matrix:
++ + +
++ a b
++ b a
+
+Switched matrix:
++ + +
++ b a
++ a b
+
+Switch matrix form:
+o o o
+o a b
+o b a
+Trade size: 4
