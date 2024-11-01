@@ -4,18 +4,35 @@ Constant appendix:
 a = -0.50+0.87j
 b = -0.50-0.87j
 
-Original matrix:
+Fourier matrix:
 + + +
 + a b
 + b a
 
+Logarithmic form:
+0 0 0
+0 1 2
+0 2 1
+
+----------
 Switched matrix:
 + + +
 + b a
 + a b
 
+Logarithmic form:
+0 0 0
+0 2 1
+0 1 2
+
 Switch matrix form:
 o o o
 o a b
 o b a
+
+Switch matrix logarithmic form:
+o o o
+o 1 2
+o 2 1
 Trade size: 4
+----------
