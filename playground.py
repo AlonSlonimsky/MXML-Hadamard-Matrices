@@ -3,7 +3,7 @@ from checkHadamardNP import *
 from catalogueTradesNP import *
 
 # Elements to multiply with
-c = [1j, -1, -1j]
+c = [GAM, GAM2]
 
 c_map = {}
 curr_char = 'a'
@@ -12,24 +12,21 @@ for const in c:
     curr_char = chr(ord(curr_char) + 1)
 
 # The matrix (must be UH(n))
-example = np.matrix([
-    [1+0j, 1+0j, 1+0j, 1+0j],
-    [1+0j, 1j, -1+0j, -1j],
-    [1+0j, -1+0j, 1+0j, -1+0j],
-    [1+0j, -1j, -1+0j, 1j]
-])
+example = np.array([
+    [1, 1, 1, 1, 1, 1],
+    [1, 1, GAM, GAM, GAM2, GAM2],
+    [1, GAM, 1, GAM2, GAM2, GAM],
+    [1, GAM, GAM2, 1, GAM, GAM2],
+    [1, GAM2, GAM2, GAM, 1, GAM],
+    [1, GAM2, GAM, GAM2, GAM, 1]
 
-# example = np.matrix([
-#     [1+0j, 1+0j, 1+0j],
-#     [1+0j, GAM, GAM2],
-#     [1+0j, GAM2, GAM]
-# ])
+])
 
 # Copy the matrix to compare with the original
 copy = example.copy()
 
 # Output file
-DEST = 'outputs/F_4.txt'
+DEST = 'outputs/S_6.txt'
 
 # Clear the file
 open(DEST, 'w').close()

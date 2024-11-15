@@ -1,0 +1,188 @@
+Cataloguing UH of size 6:
+Constant appendix:
++ = 1
+a = -0.50+0.87j
+b = -0.50-0.87j
+
+Fourier matrix:
++ + + + + +
++ + a a b b
++ a + b b a
++ a b + a b
++ b b a + a
++ b a b a +
+
+Logarithmic form:
+0 0 0 0 0 0
+0 0 1 1 2 2
+0 1 0 2 2 1
+0 1 2 0 1 2
+0 2 2 1 0 1
+0 2 1 2 1 0
+
+----------
+Switched matrix:
++ + + + + +
++ + a a b b
++ a + b b a
++ a b + a b
++ b a b a +
++ b b a + a
+
+Logarithmic form:
+0 0 0 0 0 0
+0 0 1 1 2 2
+0 1 0 2 2 1
+0 1 2 0 1 2
+0 2 1 2 1 0
+0 2 2 1 0 1
+
+Switch matrix form:
+o o o o o o
+o o o o o o
+o o o o o o
+o o o o o o
+o o b a a b
+o o a b b a
+
+Switch matrix logarithmic form:
+o o o o o o
+o o o o o o
+o o o o o o
+o o o o o o
+o o 2 1 1 2
+o o 1 2 2 1
+Trade size: 8
+----------
+Switched matrix:
++ + + + + +
++ + a a b b
++ a + b b a
++ b b a + a
++ b a b a +
++ a b + a b
+
+Logarithmic form:
+0 0 0 0 0 0
+0 0 1 1 2 2
+0 1 0 2 2 1
+0 2 2 1 0 1
+0 2 1 2 1 0
+0 1 2 0 1 2
+
+Switch matrix form:
+o o o o o o
+o o o o o o
+o o o o o o
+o a o a b b
+o o b a a b
+o b a a o b
+
+Switch matrix logarithmic form:
+o o o o o o
+o o o o o o
+o o o o o o
+o 1 o 1 2 2
+o o 2 1 1 2
+o 2 1 1 o 2
+Trade size: 12
+----------
+Switched matrix:
++ + + + + +
++ + a a b b
++ a + b b a
++ b b a + a
++ a b + a b
++ b a b a +
+
+Logarithmic form:
+0 0 0 0 0 0
+0 0 1 1 2 2
+0 1 0 2 2 1
+0 2 2 1 0 1
+0 1 2 0 1 2
+0 2 1 2 1 0
+
+Switch matrix form:
+o o o o o o
+o o o o o o
+o o o o o o
+o a o a b b
+o b o b a a
+o o o o o o
+
+Switch matrix logarithmic form:
+o o o o o o
+o o o o o o
+o o o o o o
+o 1 o 1 2 2
+o 2 o 2 1 1
+o o o o o o
+Trade size: 8
+----------
+Switched matrix:
++ + + + + +
++ + a a b b
++ a + b b a
++ b a b a +
++ b b a + a
++ a b + a b
+
+Logarithmic form:
+0 0 0 0 0 0
+0 0 1 1 2 2
+0 1 0 2 2 1
+0 2 1 2 1 0
+0 2 2 1 0 1
+0 1 2 0 1 2
+
+Switch matrix form:
+o o o o o o
+o o o o o o
+o o o o o o
+o a b b o a
+o o o o o o
+o b a a o b
+
+Switch matrix logarithmic form:
+o o o o o o
+o o o o o o
+o o o o o o
+o 1 2 2 o 1
+o o o o o o
+o 2 1 1 o 2
+Trade size: 8
+----------
+Switched matrix:
++ + + + + +
++ + a a b b
++ a + b b a
++ b a b a +
++ a b + a b
++ b b a + a
+
+Logarithmic form:
+0 0 0 0 0 0
+0 0 1 1 2 2
+0 1 0 2 2 1
+0 2 1 2 1 0
+0 1 2 0 1 2
+0 2 2 1 0 1
+
+Switch matrix form:
+o o o o o o
+o o o o o o
+o o o o o o
+o a b b o a
+o b o b a a
+o o a b b a
+
+Switch matrix logarithmic form:
+o o o o o o
+o o o o o o
+o o o o o o
+o 1 2 2 o 1
+o 2 o 2 1 1
+o o 1 2 2 1
+Trade size: 12
+----------

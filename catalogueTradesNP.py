@@ -1,19 +1,46 @@
 from checkHadamardNP import *
 import numpy as np
 
+# def catalogue_trades(mat, c, dest, c_map):
+#     copy = mat.copy()
+#     hadamard_matrices = []
+#     catalogue_trades_helper(mat, c, 0, copy, dest, c_map, hadamard_matrices)
+#     hadamard_matrices.sort(key=lambda x: x[1])  # Sort based on the count value
+#     for hadamard_matrix in hadamard_matrices:
+#         write_output(hadamard_matrix[0], copy, c, c_map, hadamard_matrix[1], dest)
+
+# def catalogue_trades_helper(mat, c, index, copy, dest, c_map, hadamard_matrices, count=0):
+#     n = mat.shape[0]
+#     if index == n * n:
+#         if is_hadamard(mat):
+#             hadamard_matrices.append((mat.copy(), count))  # Store the matrix and count as a tuple
+#         return
+    
+#     curRow = index // n
+#     curCol = index % n
+    
+#     # Try without multiplying
+#     catalogue_trades_helper(mat, c, index + 1, copy, dest, c_map, hadamard_matrices, count)
+    
+#     if (curRow > 0 and curCol > 0 and count < n):
+#         for const in c:
+#             # Try multiplying by c
+#             mat[curRow, curCol] *= const
+#             catalogue_trades_helper(mat, c, index + 1, copy, dest, c_map, hadamard_matrices, count+1)
+            
+#             # Revert the change for backtracking
+#             mat[curRow, curCol] /= const
+
 def catalogue_trades(mat, c, dest, c_map):
     copy = mat.copy()
     hadamard_matrices = []
     catalogue_trades_helper(mat, c, 0, copy, dest, c_map, hadamard_matrices)
-    hadamard_matrices.sort(key=lambda x: x[1])  # Sort based on the count value
-    for hadamard_matrix in hadamard_matrices:
-        write_output(hadamard_matrix[0], copy, c, c_map, hadamard_matrix[1], dest)
 
 def catalogue_trades_helper(mat, c, index, copy, dest, c_map, hadamard_matrices, count=0):
     n = mat.shape[0]
     if index == n * n:
         if is_hadamard(mat):
-            hadamard_matrices.append((mat.copy(), count))  # Store the matrix and count as a tuple
+            write_output(mat, copy, c, c_map, count, dest)
         return
     
     curRow = index // n

@@ -3,6 +3,11 @@ import numpy as np
 GAM = np.exp(2j * np.pi / 3)
 GAM2 = np.exp(4j * np.pi / 3)
 
+EPS = np.exp(2j * np.pi / 5)
+EPS2 = np.exp(4j * np.pi / 5)
+EPS3 = np.exp(6j * np.pi / 5)
+EPS4 = np.exp(8j * np.pi / 5)
+
 def is_unit_modulus(matrix):
     """Check if all entries in the matrix have unit modulus (absolute value of 1)."""
     return np.allclose(np.abs(matrix), 1)
