@@ -1,0 +1,83 @@
+\documentclass{beamer}
+\usetheme{Copenhagen}
+\usepackage{graphicx} % Required for inserting images
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{amssymb}
+
+\title{Complex Hadamard Matrices}
+\author{Alon Slonimsky}%put your name here too
+\date{Fall 2024}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\ip}[2]{\langle #1, #2 \rangle}
+\newcommand{\RHM}{Real Hadamard Matrix}
+\newcommand{\RHMs}{Real Hadamard Matrices}
+\newcommand{\CHM}{Complex Hadamard Matrix}
+\newcommand{\CHMs}{Complex Hadamard Matrices}
+
+\newtheorem{remark}{Remark}
+
+\begin{document}
+
+\maketitle
+\begin{frame}{Definitions:}
+    \begin{definition}[Set of Complex Units]
+        Let $\U:=\{z=a+bi:a,b\in\R\land|z|=1\}$, the set of complex units.
+    \end{definition}
+    \pause
+    \begin{definition}[Hermitian Adjoint]
+        The Hermitian Adjoint $M^*$ of a Matrix $M\in \C^{n\times n}$ is the transpose of $M$, followed by the conjugate of every element.
+    \end{definition}
+    \begin{remark}
+        $\forall x\in\U,\overline{x}=x^{-1}$.\\ The inverse and the conjugate of a complex unit are always equal.
+    \end{remark}
+    \pause
+    \begin{definition}[Standard Hermitian Inner Product for $\C^n$]
+        For $\vec x,\vec y\in\C^n, \ip{\vec x}{\vec y}:=\sum_{i=1}^nx_i\overline{y_i}$
+    \end{definition}
+\end{frame}
+\begin{frame}{Real Hadamard Matrices}
+    \begin{definition}[Real Hadamard Matrix]
+        A Matrix $M\in\{\pm1\}^{n\times n}$ is a Real Hadamard Matrix if $MM^T=nI_{n\times n}$
+    \end{definition}
+    \pause
+    \begin{definition}[Real Hadamard Matrix]
+        Equivalently, a Matrix $M\in\{\pm1\}^{n\times n}$ is a Real Hadamard Matrix if every pair of distinct rows is orthogonal under the dot product.
+    \end{definition}
+\end{frame}
+\begin{frame}{Complex Hadamard Matrices}
+    \begin{definition}[Complex Hadamard Matrix]
+        A Matrix $M\in\U^{n\times n}$ is a Complex Hadamard Matrix if $MM^*=nI_{n\times n}$
+    \end{definition}
+    \pause
+    \begin{definition}[Complex Hadamard Matrix]
+        Equivalently, a Matrix $M\in\U^{n\times n}$ is a Complex Hadamard Matrix if every pair of distinct rows $r_i,r_j$ has that $\ip{r_i}{r_j}=0$.
+    \end{definition}
+    \pause
+    \begin{remark}
+        The definition of \CHMs \ generalizes the definition of \RHMs
+    \end{remark}
+\end{frame}
+\begin{frame}{Definitions}
+    \begin{definition}[Trade]
+        
+    \end{definition}
+    \pause
+    \begin{definition}[Switch]
+        
+    \end{definition}
+    \pause
+    \begin{remark}[Log Form of a Switch]
+        
+    \end{remark}
+\end{frame}
+\begin{frame}{Lemma 3 (\'{O} Cath\'{a}in and Wanless' trades paper [OW])}
+    
+\end{frame}
+\begin{frame}{Theorem 4 (OW)}
+    
+\end{frame}
+\end{document}
