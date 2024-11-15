@@ -24,19 +24,11 @@
 
 \maketitle
 \begin{frame}{Definitions:}
-    \begin{definition}[Set of Complex Units]
-        Let $\U:=\{z=a+bi:a,b\in\R\land|z|=1\}$, the set of complex units.
-    \end{definition}
-    \pause
     \begin{definition}[Hermitian Adjoint]
-        The Hermitian Adjoint $M^*$ of a Matrix $M\in \C^{n\times n}$ is the transpose of $M$, followed by the conjugate of every element.
+        The Hermitian Adjoint $M^*$ of a Matrix $M\in \C^{n\times n}$ is the transpose of $M$, followed by the inverse of every element.
     \end{definition}
-    \begin{remark}
-        $\forall x\in\U,\overline{x}=x^{-1}$.\\ The inverse and the conjugate of a complex unit are always equal.
-    \end{remark}
-    \pause
-    \begin{definition}[Standard Hermitian Inner Product for $\C^n$]
-        For $\vec x,\vec y\in\C^n, \ip{\vec x}{\vec y}:=\sum_{i=1}^nx_i\overline{y_i}$
+    \begin{definition}[Hermitian Inner Product for $\C^n$]
+        For $\vec x,\vec y\in\C^n, \ip{\vec x}{\vec y}:=\sum_{i=1}^nx_iy_i^{-1}$
     \end{definition}
 \end{frame}
 \begin{frame}{Real Hadamard Matrices}
@@ -49,6 +41,10 @@
     \end{definition}
 \end{frame}
 \begin{frame}{Complex Hadamard Matrices}
+    \begin{definition}[Set of Complex Units]
+        Let $\U:=\{z=a+bi:a,b\in\R\land|z|=1\}$, the set of complex units.
+    \end{definition}
+    \pause
     \begin{definition}[Complex Hadamard Matrix]
         A Matrix $M\in\U^{n\times n}$ is a Complex Hadamard Matrix if $MM^*=nI_{n\times n}$
     \end{definition}
@@ -74,10 +70,52 @@
         
     \end{remark}
 \end{frame}
-\begin{frame}{Lemma 3 (\'{O} Cath\'{a}in and Wanless' trades paper [OW])}
-    
+\begin{frame}{Definitions}
+    \begin{definition}[N-Uniform Switch]
+        
+    \end{definition}
+    \pause
+    \begin{remark}[N-Uniform Row/Column]
+        
+    \end{remark}
 \end{frame}
-\begin{frame}{Theorem 4 (OW)}
-    
+\begin{frame}{Lemma 3 (\'{O} Cath\'{a}in and Wanless' trades paper [OW])}%must also add a citation here
+    \begin{lemma}[Lemma 3]
+        
+    \end{lemma}
+\end{frame}
+
+\begin{frame}{Ratio of Inner Product of N-Uniform Row}
+    \begin{lemma}%I need to rewrite this, it is difficult to read and also assumes some existing understanding of the proof of lemma 3
+        For $N\geq2$ define a N-uniform trade $T$ in UH. Let $K=\{k_1,k_2,\dots k_N\}$ $(1\notin K)$ be the list of scalars used in the N-uniform trade. Let $T_i$ be the set of elements in $T$ that are multiplied by $k_i$ in the trade. Let $R:=\overline{T}$ be the remaining elements. Then we have that $T=\bigsqcup_{i=1}^NT_i$ (disjoint union). Let $r_a$ be a row such that an element of $r_a$ is in each of $T_i$. Let $r_b$ be a row that does not participate in the trade. Let $r_{a,A}$ be the elements of $r_a$ that are in set $A$.\\
+    Then $\langle r_{a,T_1},r_{b,T_1}\rangle=\sum_{i=2}^N\frac{k_i-1}{1-k_1}\langle r_{a,T_i},r_{b,T_i}\rangle$
+    \end{lemma}
+\end{frame}
+
+\begin{frame}{Ratio of Inner Product of N-Uniform Row}
+    \begin{proof}
+        By orthogonality in both the original matrix and the traded matrix, we have that: 
+    $$\sum_{i=1}^N\langle r_{a,T_i},r_{b,T_i}\rangle + \langle r_{a,R},r_{b,R}\rangle=0$$
+    And also:
+    $$\sum_{i=1}^N\langle k_ir_{a,T_i},r_{b,T_i}\rangle + \langle r_{a,R},r_{b,R}\rangle=\sum_{i=1}^Nk_i\langle r_{a,T_i},r_{b,T_i}\rangle + \langle r_{a,R},r_{b,R}\rangle=0$$
+    Then as both values are equal, we remove the common term and see:
+    $$\sum_{i=1}^N\langle r_{a,T_i},r_{b,T_i}\rangle = \sum_{i=1}^Nk_i\langle r_{a,T_i},r_{b,T_i}\rangle$$
+    \end{proof}
+\end{frame}
+\begin{frame}{Ratio of Inner Product of N-Uniform Row}
+\begin{proof}
+    $$\sum_{i=1}^N\langle r_{a,T_i},r_{b,T_i}\rangle = \sum_{i=1}^Nk_i\langle r_{a,T_i},r_{b,T_i}\rangle$$
+    So by collecting like terms, we see:
+    \begin{align*}
+        (1-k_1)\langle r_{a,T_i},r_{b,T_i}\rangle&=\sum_{i=2}^N(k_i-1)\langle r_{a,T_i},r_{b,T_i}\rangle\\\implies \langle r_{a,T_1},r_{b,T_1}\rangle&=\sum_{i=2}^N\frac{k_i-1}{1-k_1}\langle r_{a,T_i},r_{b,T_i}\rangle
+    \end{align*}
+\end{proof}
+\end{frame}
+
+
+\begin{frame}{Theorem 4 (OW)}%must also add a citation here
+    \begin{theorem}[Theorem 4]
+        
+    \end{theorem}
 \end{frame}
 \end{document}
