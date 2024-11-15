@@ -3,16 +3,17 @@ from checkHadamardNP import *
 from catalogueTradesNP import *
 
 # Elements to multiply with
-c = [GAM, GAM2]
+c: List[complex] = [GAM, GAM2]
 
-c_map = {}
-curr_char = 'a'
+c_map: dict = {}
+curr_char: str = 'a'
 for const in c:
     c_map[const] = curr_char
     curr_char = chr(ord(curr_char) + 1)
 
 # The matrix (must be UH(n))
-example = np.array([
+# Current example is using spectral matrix of order 6 (a BH(6,3))
+example: np.ndarray = np.array([
     [1, 1, 1, 1, 1, 1],
     [1, 1, GAM, GAM, GAM2, GAM2],
     [1, GAM, 1, GAM2, GAM2, GAM],
@@ -23,10 +24,10 @@ example = np.array([
 ])
 
 # Copy the matrix to compare with the original
-copy = example.copy()
+copy: np.ndarray = example.copy()
 
 # Output file
-DEST = 'outputs/S_6.txt'
+DEST: str = 'outputs/test.txt'
 
 # Clear the file
 open(DEST, 'w').close()
