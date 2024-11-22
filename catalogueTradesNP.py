@@ -38,6 +38,12 @@ def catalogue_trades_helper(mat: np.ndarray, c: List[complex], index: int, copy:
 
     """
     n: int = mat.shape[0]  # Get the size of the matrix (assuming it's a square matrix)
+    if index % n == 0:
+        for i in range(0, index // n):
+            for j in range(i + 1, index // n):
+                if not is_pairwise_orthogonal_rows(mat[i], mat[j]):
+                    return
+                
     if index == n * n:  # Base case: reached the end of the matrix
         if is_hadamard(mat):  # Check if the modified matrix is still a Hadamard matrix
             write_output(mat, copy, c, c_map, count, dest)  # Write the results to the output file

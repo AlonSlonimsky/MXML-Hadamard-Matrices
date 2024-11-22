@@ -15,6 +15,11 @@ def is_unit_modulus(matrix: np.ndarray) -> bool:
     """
     return np.allclose(np.abs(matrix), 1)
 
+def is_pairwise_orthogonal_rows(first_row: np.ndarray, second_row: np.ndarray) -> bool:
+    product: np.ndarray = first_row @ second_row.T.conjugate()
+
+    return np.isclose(product, 0)
+
 def is_pairwise_orthogonal(matrix: np.ndarray) -> bool:
     """Check if the columns of the matrix are pairwise orthogonal.
     This function calculates the matrix product and checks for the appropriate diagonal

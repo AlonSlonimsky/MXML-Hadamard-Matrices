@@ -3,7 +3,7 @@ from checkHadamardNP import *
 from catalogueTradesNP import *
 
 # Elements to multiply with
-c: List[complex] = [GAM, GAM2]
+c: List[complex] = [EPS, EPS2, EPS3, EPS4]
 
 c_map: dict = {}
 curr_char: str = 'a'
@@ -13,21 +13,36 @@ for const in c:
 
 # The matrix (must be UH(n))
 # Current example is using spectral matrix of order 6 (a BH(6,3))
-example: np.ndarray = np.array([
-    [1, 1, 1, 1, 1, 1],
-    [1, 1, GAM, GAM, GAM2, GAM2],
-    [1, GAM, 1, GAM2, GAM2, GAM],
-    [1, GAM, GAM2, 1, GAM, GAM2],
-    [1, GAM2, GAM2, GAM, 1, GAM],
-    [1, GAM2, GAM, GAM2, GAM, 1]
+# example: np.ndarray = np.array([
+#     [1, 1, 1, 1, 1, 1],
+#     [1, 1, GAM, GAM, GAM2, GAM2],
+#     [1, GAM, 1, GAM2, GAM2, GAM],
+#     [1, GAM, GAM2, 1, GAM, GAM2],
+#     [1, GAM2, GAM2, GAM, 1, GAM],
+#     [1, GAM2, GAM, GAM2, GAM, 1]
 
+# ])
+
+# example: np.ndarray = np.array([
+#     [1, 1, 1, 1],
+#     [1, 1j, -1, -1j],
+#     [1, -1, 1, -1],
+#     [1, -1j, -1, 1j]
+# ])
+
+example: np.ndarray = np.array([
+    [1, 1, 1, 1, 1],
+    [1, EPS, EPS2, EPS3, EPS4],
+    [1, EPS2, EPS4, EPS, EPS3],
+    [1, EPS3, EPS, EPS4, EPS2],
+    [1, EPS4, EPS3, EPS2, EPS]
 ])
 
 # Copy the matrix to compare with the original
 copy: np.ndarray = example.copy()
 
 # Output file
-DEST: str = 'outputs/test.txt'
+DEST: str = 'outputs/F_5.txt'
 
 # Clear the file
 open(DEST, 'w').close()
