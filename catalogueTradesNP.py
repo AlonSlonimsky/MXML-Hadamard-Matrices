@@ -2,6 +2,7 @@ from checkHadamardNP import *
 import numpy as np
 from typing import List
 
+
 def catalogue_trades(mat: np.ndarray, c: List[complex], dest: str, c_map: dict) -> None:
     """
     This function catalogues all possible trades in a given Hadamard matrix. 
@@ -17,7 +18,9 @@ def catalogue_trades(mat: np.ndarray, c: List[complex], dest: str, c_map: dict) 
 
     """
     copy: np.ndarray = mat.copy()  # Create a copy of the matrix for comparison
-    catalogue_trades_helper(mat, c, 0, copy, dest, c_map)  # Start the recursive helper function
+    # Start the recursive helper function
+    catalogue_trades_helper(mat, c, 0, copy, dest, c_map)
+
 
 def catalogue_trades_helper(mat: np.ndarray, c: List[complex], index: int, copy: np.ndarray, dest: str, c_map: dict, count: int = 0) -> None:
     """
@@ -43,25 +46,31 @@ def catalogue_trades_helper(mat: np.ndarray, c: List[complex], index: int, copy:
             for j in range(i + 1, index // n):
                 if not is_pairwise_orthogonal_rows(mat[i], mat[j]):
                     return
-                
+
     if index == n * n:  # Base case: reached the end of the matrix
         if is_hadamard(mat):  # Check if the modified matrix is still a Hadamard matrix
-            write_output(mat, copy, c, c_map, count, dest)  # Write the results to the output file
+            # Write the results to the output file
+            write_output(mat, copy, c, c_map, count, dest)
         return
 
     curRow: int = index // n  # Calculate the current row index
     curCol: int = index % n  # Calculate the current column index
 
     # Try without multiplying
-    catalogue_trades_helper(mat, c, index + 1, copy, dest, c_map, count) 
+    catalogue_trades_helper(mat, c, index + 1, copy, dest, c_map, count)
 
-    if (curRow > 0 and curCol > 0):  # Only try multiplying if the current entry is not the first row or column
+    # Only try multiplying if the current entry is not the first row or column
+    if (curRow > 0 and curCol > 0):
         for const in c:
             # Try multiplying by each of the constant
             mat[curRow, curCol] *= const  # Multiply the entry by the constant
-            catalogue_trades_helper(mat, c, index + 1, copy, dest, c_map, count+1)  # Recursively call the helper function
-            
-            mat[curRow, curCol] /= const  # Revert the multiplication for backtracking
+            # Recursively call the helper function
+            catalogue_trades_helper(
+                mat, c, index + 1, copy, dest, c_map, count+1)
+
+            # Revert the multiplication for backtracking
+            mat[curRow, curCol] /= const
+
 
 def generate_comparison_matrix(mat: np.ndarray, original_mat: np.ndarray, constants: List[complex], c_map: dict) -> np.ndarray:
     """
@@ -78,7 +87,8 @@ def generate_comparison_matrix(mat: np.ndarray, original_mat: np.ndarray, consta
     Returns:
         np.ndarray: A matrix representing the comparison.
     """
-    comparison_mat: np.ndarray = np.full(mat.shape, 'o', dtype=str)  # Create a matrix filled with 'o'
+    comparison_mat: np.ndarray = np.full(
+        mat.shape, 'o', dtype=str)  # Create a matrix filled with 'o'
     count: int = 0
     for r in range(mat.shape[0]):
         for c in range(mat.shape[1]):
@@ -90,6 +100,7 @@ def generate_comparison_matrix(mat: np.ndarray, original_mat: np.ndarray, consta
     if count < mat.shape[0] and count != 0:
         print("TRADE LESS THAN n DETECTED")
     return comparison_mat
+
 
 def generate_comparison_matrix_log(mat: np.ndarray, original_mat: np.ndarray, constants: List[complex], c_map: dict) -> np.ndarray:
     """
@@ -117,6 +128,7 @@ def generate_comparison_matrix_log(mat: np.ndarray, original_mat: np.ndarray, co
                     break
     return comparison_mat
 
+
 def format_matrix(mat: np.ndarray, constants: List[complex], c_map: dict) -> np.ndarray:
     """
     Formats the given matrix for output by replacing complex entries with their corresponding characters 
@@ -140,6 +152,7 @@ def format_matrix(mat: np.ndarray, constants: List[complex], c_map: dict) -> np.
                     count += 1
                     break
     return formatted_mat
+
 
 def format_matrix_log(mat: np.ndarray, constants: List[complex], c_map: dict) -> np.ndarray:
     """
@@ -165,6 +178,7 @@ def format_matrix_log(mat: np.ndarray, constants: List[complex], c_map: dict) ->
                     break
     return formatted_mat
 
+
 def write_output(mat: np.ndarray, copy: np.ndarray, c: List[complex], c_map: dict, n: int, dest: str):
     """
     Writes the formatted output to a file. 
@@ -183,8 +197,10 @@ def write_output(mat: np.ndarray, copy: np.ndarray, c: List[complex], c_map: dic
     """
     formatted_mat: np.ndarray = format_matrix(mat, c, c_map)
     formatted_mat_log: np.ndarray = format_matrix_log(mat, c, c_map)
-    comparison_mat: np.ndarray = generate_comparison_matrix(mat, copy, c, c_map)
-    comparison_mat_log: np.ndarray = generate_comparison_matrix_log(mat, copy, c, c_map)
+    comparison_mat: np.ndarray = generate_comparison_matrix(
+        mat, copy, c, c_map)
+    comparison_mat_log: np.ndarray = generate_comparison_matrix_log(
+        mat, copy, c, c_map)
     with open(dest, 'a') as f:
         if (n == 0):
             f.write("Fourier matrix:\n")
@@ -223,18 +239,18 @@ def write_output(mat: np.ndarray, copy: np.ndarray, c: List[complex], c_map: dic
 #         if is_hadamard(mat):
 #             hadamard_matrices.append((mat.copy(), count))  # Store the matrix and count as a tuple
 #         return
-    
+
 #     curRow = index // n
 #     curCol = index % n
-    
+
 #     # Try without multiplying
 #     catalogue_trades_helper(mat, c, index + 1, copy, dest, c_map, hadamard_matrices, count)
-    
+
 #     if (curRow > 0 and curCol > 0 and count < n):
 #         for const in c:
 #             # Try multiplying by c
 #             mat[curRow, curCol] *= const
 #             catalogue_trades_helper(mat, c, index + 1, copy, dest, c_map, hadamard_matrices, count+1)
-            
+
 #             # Revert the change for backtracking
 #             mat[curRow, curCol] /= const
