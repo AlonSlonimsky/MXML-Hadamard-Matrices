@@ -13,19 +13,20 @@ for const in c:
 
 # The matrix (must be UH(n))
 example = np.array([
-    [1, 1, 1, 1, 1, 1],
-    [1, ZET, GAM, -1, GAM2, ZET5],
-    [1, GAM, GAM2, 1, GAM, GAM2],
-    [1, -1, 1, -1, 1, -1],
-    [1, GAM2, GAM, 1, GAM2, GAM],
-    [1, ZET5, GAM2, -1, GAM, ZET]
+    [1, 1, 1, 1, 1, 1, 1],
+    [1, ZET, GAM2, ZET5, -1, -1, ZET],
+    [1, GAM2, ZET, -1, ZET5, -1, ZET],
+    [1, ZET5, -1, ZET, GAM2, ZET, -1],
+    [1, -1, ZET5, GAM2, ZET, ZET, -1],
+    [1, -1, -1, ZET, ZET, GAM2, ZET5],
+    [1, ZET, ZET, -1, -1, ZET5, GAM2]
 ])
 
 # Copy the matrix to compare with the original
 copy: np.ndarray = example.copy()
 
 # Output file
-DEST: str = 'outputs/F_6.txt'
+DEST: str = 'outputs/P_7.txt'
 
 # Clear the file
 open(DEST, 'w').close()
